@@ -3,24 +3,28 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        System.out.println("학생 수를 입력하세요.");
+        int studentCount = scanner.nextInt();
+        System.out.println("과목 수를 입력하세요.");
+        int subjectCount = scanner.nextInt();
+        int[][] scores = new int[studentCount][subjectCount];
 
-        int sum = 0;
-        int count = 0;
+        for (int i = 0; i < studentCount; i++) {
+            System.out.println("\n[" + (i + 1) + "번 학생의 성적 입력]");
+            for (int j = 0; j < subjectCount; j++) {
+                System.out.print("과목 " + (j + 1) + " 점수: ");
+                scores[i][j] = scanner.nextInt();
 
-        while (true) {
-            System.out.print("점수를 입력하세요 (종료하려면 음수를 입력): ");
-            int score = scanner.nextInt();
-            if (score < 0) break;
-            sum += score;
-            count++;
+            }
+        }
+        System.out.println("---성적표---");
+        for (int i = 0; i < studentCount; i++) {
+            System.out.println("\n" + (i + 1) + "번 학생: ");
+            for (int j = 0; j < subjectCount; j++) {
+                System.out.println( scores[i][j] + "");
+            }
+
         }
 
-        if (count == 0) {
-            System.out.println("입력된 점수가 없습니다.");
-        } else {
-            System.out.println("점수의 총합은: " + sum);
-        }
-
-        scanner.close();
     }
 }
